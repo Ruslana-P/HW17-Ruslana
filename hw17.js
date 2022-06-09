@@ -1,14 +1,11 @@
 function delay(ms) {
-    return new Promise(
-        (resolve, reject)=> {
+    return new Promise( function(resolve, reject){
             setTimeout( ()=> resolve(), ms);
         }
     )
 }
 
 delay(1000).then(()=> console.log('Hello'))
-
-//---------------------------------------------------------------------------------
 
 function getUserInfo() {
     return new Promise(function (resolve, reject) {
@@ -27,19 +24,15 @@ getUserInfo().then( function getUserAvatar(userInfo) {
     });
 }).then((userInfo)=>console.log(userInfo));
 
-//--------------------------------------------------------------------------------------
-
 new Promise(function(resolve, reject) {
     setTimeout(() => resolve({ name: 'Vic', age: 21, id: 1 } ), 1000);
-})
-    .then(function(userInfo) {
+}).then(function(userInfo) {
         return new Promise(function(resolve, reject) {
             setTimeout(() => reject(new Error('wrong data') ), 1000);
         });
     })
-
 .catch(function(result){
-    console.log(result);
+console.log(result);
 })
 
 
